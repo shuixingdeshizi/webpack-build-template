@@ -22,7 +22,11 @@ module.exports = {
 
   devServer: {
     proxy: { // proxy URLs to backend development server
-      '/api': 'http://localhost:3000'
+      '/proxy': {
+        target: 'http://www.example.com',
+        changeOrigin: true,
+        pathRewrite: {'^/proxy':''}
+      }
     },
     port: 9000,
     open: true,
